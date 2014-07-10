@@ -7,8 +7,6 @@
 -export([start_link/0]).
 -export([stop/0]).
 -export([insert/1]).
--export([lookup/1]).
--export([lookup/2]).
 -export([join_chan/2]).
 -export([get_members/1]).
 
@@ -30,19 +28,6 @@ stop() ->
 
 insert(Data) ->
     gen_server:call(?MODULE, {insert, Data}).
-
-lookup(Key) ->
-    lookup(Key, undefined).
-
-lookup(Key, Default) ->
-    case ets:lookup(?MODULE, Key) of
-        [] ->
-            Default;
-        [{_, undefined}] ->
-            Default;
-        [{_, V}] ->
-            V
-    end.
 
 join_chan(Sock, Chan) ->
     insert({Sock, channel, Chan}).

@@ -48,8 +48,8 @@ join_chan(Sock, Chan) ->
     insert({Sock, channel, Chan}).
 
 get_members(Chan) ->
-    [H] = ets:match(?MODULE, {'$1', channel, Chan}),
-    [C || C <- H].
+    Members = ets:match(?MODULE, {'$1', channel, Chan}),
+    [M || [M] <- Members].
 
 %% -----------------------------------------------------------------------------
 %% gen_server

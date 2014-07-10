@@ -1,0 +1,4 @@
+* SQ
+
+  Someone asked me for a routing system so I wrote a very simple queue system to
+  illustrate them Erlang is the right tool for the job.
